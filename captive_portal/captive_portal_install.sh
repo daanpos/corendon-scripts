@@ -34,6 +34,9 @@ EOF
 sudo a2dissite 000-default
 sudo a2ensite captive-portal
 
+# Reload apache2 to load the right config
+sudo systemctl reload apache2
+
 # WSGI config file
 sudo cat >> /var/www/html/app.wsgi << EOF
 #!/usr/bin/python
@@ -43,5 +46,5 @@ sys.path.insert(0,"/var/www/html/captive-portal")
 from app import app as application
 EOF
 
-# Reload apache2 to load the right config
-sudo systemctl reload apache2
+# # Reload apache2 to load the right config
+# sudo systemctl reload apache2
